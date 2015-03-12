@@ -2,3 +2,4 @@
 /wagtaildemo/settings/local.py
 *.pyc
 /Vagrantfile.local
+/media/

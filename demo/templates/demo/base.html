@@ -8,7 +8,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Wagtail Demo{% endblock %}</title>
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | UEL{% endblock %}</title>
 
         <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
 
@@ -27,7 +27,7 @@
         {# Javascript that needs to be called from head e.g. google analytics snippet and bootstrap shivs #}
         <script type="text/javascript">
               var _gaq = _gaq || [];
-              _gaq.push(['_setAccount', 'UA-xxxxxxx-x']);
+              _gaq.push(['_setAccount', 'UA-60712025-1']);
               _gaq.push(['_trackPageview']);
 
               (function() {
@@ -84,6 +84,6 @@
         {% endcompress %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}
-        
+
     </body>
 </html>

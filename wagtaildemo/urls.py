@@ -12,7 +12,6 @@ from wagtail.wagtailsearch.urls import frontend as wagtailsearch_frontend_urls
 
 admin.autodiscover()
 
-
 # Signal handlers
 from wagtail.wagtailsearch.signal_handlers import register_signal_handlers as wagtailsearch_register_signal_handlers
 wagtailsearch_register_signal_handlers()

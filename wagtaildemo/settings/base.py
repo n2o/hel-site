@@ -8,6 +8,8 @@ BASE_DIR = PROJECT_ROOT
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+FULL_DOMAIN = ''
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -78,9 +80,34 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
+
+
+###################################
+# s3 storage
+###################################
+AWS_STORAGE_BUCKET_NAME = 'uel-static'
+AWS_ACCESS_KEY_ID = 'AKIAJS2P6VLFJPJZ3APA'
+AWS_SECRET_ACCESS_KEY = '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'
+
+DEFAULT_FILE_STORAGE = 'demo.s3utils.MediaS3BotoStorage'
+STATICFILES_STORAGE = 'demo.s3utils.StaticS3BotoStorage'
+COMPRESS_STORAGE = 'demo.s3utils.CompressorS3BotoStorage'
+THUMBNAIL_DEFAULT_STORAGE = 'demo.s3utils.MediaS3BotoStorage'
+
+S3_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+STATIC_DIRECTORY = '/static/'
+MEDIA_DIRECTORY = '/media/'
+STATIC_URL = S3_URL + STATIC_DIRECTORY
+MEDIA_URL = S3_URL + MEDIA_DIRECTORY
+
+
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+COMPRESS_CSS_FILTERS = [
+    'demo.compress_filters.CustomCssAbsoluteFilter',
+]
+COMPRESS_ENABLED = True
+
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -167,6 +194,8 @@ INSTALLED_APPS = (
     'wagtail.wagtailforms',
     'wagtail.wagtailsites',
 
+    'storages',
+
     'demo',
 )
 
@@ -215,7 +244,7 @@ LOGGING = {
 
 # WAGTAIL SETTINGS
 
-WAGTAIL_SITE_NAME = 'UEL'
+WAGTAIL_SITE_NAME = 'wagtaildemo'
 
 # Override the search results template for wagtailsearch
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'demo/search_results.html'

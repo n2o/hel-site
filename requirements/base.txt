@@ -5,3 +5,5 @@ django-modelcluster>=0.4
 wagtail>=0.8.4
 django-taggit>=0.12.2
 django-libsass>=0.2
+django-storages>=1.1.8
+boto>=2.36.0

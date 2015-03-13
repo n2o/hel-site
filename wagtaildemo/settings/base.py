@@ -8,6 +8,7 @@ BASE_DIR = PROJECT_ROOT
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+# Well... just don't change this line
 FULL_DOMAIN = ''
 
 ADMINS = (
@@ -80,11 +81,9 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-#STATIC_URL = '/static/'
-
 
 ###################################
-# s3 storage
+# S3 storage
 ###################################
 AWS_STORAGE_BUCKET_NAME = 'uel-static'
 AWS_ACCESS_KEY_ID = 'AKIAJS2P6VLFJPJZ3APA'
@@ -101,7 +100,11 @@ MEDIA_DIRECTORY = '/media/'
 STATIC_URL = S3_URL + STATIC_DIRECTORY
 MEDIA_URL = S3_URL + MEDIA_DIRECTORY
 
+###################################
+# / S3 storage
+###################################
 
+# Set custom compressor for use with S3
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 COMPRESS_CSS_FILTERS = [
     'demo.compress_filters.CustomCssAbsoluteFilter',
@@ -244,7 +247,7 @@ LOGGING = {
 
 # WAGTAIL SETTINGS
 
-WAGTAIL_SITE_NAME = 'wagtaildemo'
+WAGTAIL_SITE_NAME = 'UEL'
 
 # Override the search results template for wagtailsearch
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'demo/search_results.html'

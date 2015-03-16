@@ -85,7 +85,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 ###################################
 # S3 storage
 ###################################
-AWS_STORAGE_BUCKET_NAME = 'uel-static'
+AWS_STORAGE_BUCKET_NAME = 'hel-static'
 AWS_ACCESS_KEY_ID = 'AKIAJS2P6VLFJPJZ3APA'
 AWS_SECRET_ACCESS_KEY = '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'
 

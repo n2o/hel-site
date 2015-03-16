@@ -246,7 +246,7 @@ LOGGING = {
 
 
 # WAGTAIL SETTINGS
-WAGTAIL_SITE_NAME = 'UEL'
+WAGTAIL_SITE_NAME = 'HEL'
 
 # Override the search results template for wagtailsearch
 WAGTAILSEARCH_RESULTS_TEMPLATE = 'demo/search_results.html'

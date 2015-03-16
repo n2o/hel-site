@@ -81,7 +81,6 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-
 ###################################
 # S3 storage
 ###################################

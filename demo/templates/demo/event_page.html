@@ -4,26 +4,26 @@
 {% block content %}
     <div class="well">
         <p><strong>
-            {{ self.date_from }}{% if self.date_to %} to {{ self.date_to }}{% endif %}
-            {% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} to {{ self.time_to|time }}{% endif %}
+            {{ self.date_from }}{% if self.date_to %} bis {{ self.date_to }}{% endif %},
+            {% if self.time_from %}{{ self.time_from|time }}{% endif %}{% if self.time_to %} bis {{ self.time_to|time }}{% endif %}
         </strong></p>
-        {% if self.location %}<p>Location: {{ self.location }}</p>{% endif %}
+        {% if self.location %}<p>Ort: {{ self.location }}</p>{% endif %}
         {% if self.audience %}
-            <p>Audience:
+            <p>Publikum:
             {# From EVENT_AUDIENCE_CHOICES in models.py #}
             {{ self.get_audience_display }}</p>
         {% endif %}
         {% if self.cost %}
-            <p>Cost: {{ self.cost|safe }}</p>
+            <p>Kosten: {{ self.cost|safe }}</p>
         {% endif %}
 
         {% if self.signup_link %}
-            <p>Sign up: <a href="{{ self.signup_link }}">{{ self.signup_link }}</a></p>
+            <p>Anmeldung: <a href="{{ self.signup_link }}">{{ self.signup_link }}</a></p>
         {% endif %}
 
         <p>
             <a class='calendar' href= "{{ self.url }}?format=ical">
-                Add to calendar
+                Zum Kalender hinzufügen <i class="fa fa-calendar"></i>
             </a>
         </p>
     </div>
@@ -33,7 +33,7 @@
     {% include "demo/includes/body.html" with body=self.body only %}
 
     {% with self.speakers.all as speakers %}
-        {% if speakers %}    
+        {% if speakers %}
             <div class="page-header"><h3>Speakers</h3></div>
                 {% for speaker in speakers %}
                     {% cycle '<div class="row">' '' '' %} {# Open row div before first speaker then every 3 loops #}
@@ -48,14 +48,14 @@
                                 {% if speaker.image %}
                                     <div class="image">{% image speaker.image width-200 %}</div>
                                 {% endif %}
-                                    
+
                             {% if speaker.link %}
                                 </a>
                             {% endif %}
                         </div>
                     {% cycle '' '' '</div>' %} {# Close row div before every 3rd speaker #}
                 {% endfor %}
-            {% if not speakers|length|divisibleby:'3' %}</div>{% endif %} {# Last close of row div if speakers list not exactly divisble by 3 #}      
+            {% if not speakers|length|divisibleby:'3' %}</div>{% endif %} {# Last close of row div if speakers list not exactly divisble by 3 #}
         {% endif %}
     {% endwith %}
 

@@ -6,12 +6,10 @@ from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth.models import User
 
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, \
-    InlinePanel, PageChooserPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, PageChooserPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
@@ -601,3 +599,47 @@ FormPage.content_panels = [
         FieldPanel('subject', classname="full"),
     ], "Email")
 ]
+
+
+# Teams
+class Team(models.Model):
+    name = models.CharField(max_length=255)
+    captain = models.ForeignKey(
+        'User',
+        related_name='user',
+        null=True,
+        blank=True
+    )
+
+    panels = [
+        FieldPanel('name'),
+        PageChooserPanel('captain'),
+    ]
+
+    def __unicode__(self):
+        return self.name
+
+register_snippet(Team)
+
+
+# User Management
+class User(models.Model):
+    username = models.CharField(max_length=255)
+    email = models.EmailField()
+    team = models.ForeignKey(
+        'Team',
+        related_name='team',
+        null=True,
+        blank=True
+    )
+
+    panels = [
+        FieldPanel('username'),
+        FieldPanel('email'),
+        PageChooserPanel('team'),
+    ]
+
+    def __unicode__(self):
+        return self.username
+
+register_snippet(User)

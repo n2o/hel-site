@@ -46,7 +46,7 @@ TIME_ZONE = 'Europe/Berlin'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-gb'
+LANGUAGE_CODE = 'de-de'
 
 SITE_ID = 1
 
@@ -132,7 +132,7 @@ STATICFILES_FINDERS = (
 # ** however this is a demo app so we're using the default settings.
 # ** Don't use this key in any non-demo usage!
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'wq21wtjo3@d_qfjvd-#td!%7gfy2updj2z+nev^k$iy%=m4_tr'
+SECRET_KEY = '^5ckysrdTNvpbdXK&bTFCQucMbB3M!72b@GRQ#mCaKhta%g3%#'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

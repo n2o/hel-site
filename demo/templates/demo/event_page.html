@@ -16,6 +16,9 @@
         {% if self.cost %}
             <p>Kosten: {{ self.cost|safe }}</p>
         {% endif %}
+        {% if self.prize_money %}
+            <p>Preisgeld: {{ self.prize_money|safe }}</p>
+        {% endif %}
 
         {% if self.signup_link %}
             <p>Anmeldung: <a href="{{ self.signup_link }}">{{ self.signup_link }}</a></p>

@@ -521,6 +521,7 @@ class EventPage(Page):
     location = models.CharField(max_length=255)
     body = RichTextField(blank=True)
     cost = models.CharField(max_length=255)
+    prize_money = models.CharField(max_length=255)
     signup_link = models.URLField(blank=True)
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -568,6 +569,7 @@ EventPage.content_panels = [
     FieldPanel('location'),
     FieldPanel('audience'),
     FieldPanel('cost'),
+    FieldPanel('prize_money'),
     FieldPanel('signup_link'),
     InlinePanel(EventPage, 'carousel_items', label="Carousel items"),
     FieldPanel('body', classname="full"),

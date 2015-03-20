@@ -13,6 +13,7 @@ from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, Inli
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
 from wagtail.wagtailsearch import index
@@ -600,8 +601,29 @@ FormPage.content_panels = [
     ], "Email")
 ]
 
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+
+
+##### Create Users, Teams and assign them #####
+
+# User Management
+@register_snippet
+class User(models.Model):
+    username = models.CharField(max_length=255)
+    email = models.EmailField()
+    team = models.ForeignKey(
+        'Team',
+        related_name='team',
+        null=True,
+        blank=True
+    )
+
+    def __unicode__(self):
+        return self.username
+
 
 # Teams
+@register_snippet
 class Team(models.Model):
     name = models.CharField(max_length=255)
     captain = models.ForeignKey(
@@ -613,33 +635,15 @@ class Team(models.Model):
 
     panels = [
         FieldPanel('name'),
-        PageChooserPanel('captain'),
+        SnippetChooserPanel('captain', User),
     ]
 
     def __unicode__(self):
         return self.name
 
-register_snippet(Team)
-
-
-# User Management
-class User(models.Model):
-    username = models.CharField(max_length=255)
-    email = models.EmailField()
-    team = models.ForeignKey(
-        'Team',
-        related_name='team',
-        null=True,
-        blank=True
-    )
-
-    panels = [
-        FieldPanel('username'),
-        FieldPanel('email'),
-        PageChooserPanel('team'),
+# Set layout for admin panel
+User.panels = [
+    FieldPanel('username'),
+    FieldPanel('email'),
+    SnippetChooserPanel('team', Team),
     ]
-
-    def __unicode__(self):
-        return self.username
-
-register_snippet(User)

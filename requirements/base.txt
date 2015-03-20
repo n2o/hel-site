@@ -7,4 +7,3 @@ django-taggit>=0.12.2
 django-libsass>=0.2
 django-storages>=1.1.8
 boto>=2.36.0
-bcrypt>=1.1.1

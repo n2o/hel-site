@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import date
 
 from django.db import models
@@ -22,10 +24,9 @@ from taggit.models import Tag, TaggedItemBase
 
 from demo.utils import export_event
 
-
 EVENT_AUDIENCE_CHOICES = (
-    ('public', "Public"),
-    ('private', "Private"),
+    ('public', "Öffentlich"),
+    ('private', "Geschlossene Gesellschaft"),
 )
 
 

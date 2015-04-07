@@ -6,7 +6,22 @@
 
     <form action="{% pageurl self %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+            <div class="row">
+                <div class="col-md-2">
+                    {{ field.label_tag }}
+                </div>
+                <div class="col-md-6">
+                    {{ field }}
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ field.errors }}
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
         <input type="submit">
     </form>
 {% endblock %}
